@@ -44,7 +44,7 @@ Open the [P1.ipynb](P1.ipynb)  file and run it step by step
 
 
 Pipeline consisted of 6 steps. 
-* First, Colored images has 3 layers/channels so it has height*width*3 size data so I converted the images to grayscale for reduce channel count.
+* First, Colored images has 3 layers/channels so it has height x width x 3 size data so I converted the images to grayscale for reduce channel count.
 
 ```python 
 def grayscale(img):    
