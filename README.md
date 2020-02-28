@@ -1,5 +1,5 @@
 # **Finding Lane Lines on the Road** 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images_output/solidYellowCurve.jpg "Grayscale"
 
 ## Overview
 When we drive, we use our eyes to decide where to go. The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle. Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
@@ -53,6 +53,8 @@ def grayscale(img):
 gray_image = grayscale(image)
 ```
 
+<img src="./test_images_preprocess/gray_plot.png">
+
 * Captured images may have distortion or noisy data so we are us'ng gaussian blur function with kernel size = 3. 
 ```python 
 def gaussian_blur(img, kernel_size):
@@ -60,6 +62,8 @@ def gaussian_blur(img, kernel_size):
 
 gaussian_blur_image = gaussian_blur(gray_image, 3)
 ```
+<img src="./test_images_preprocess/gaussian_plot.png">
+
 
 * For detecting image edges (feature) we are using Canny Edge Detection 
 ```python 
@@ -68,6 +72,8 @@ def canny(img, low_threshold, high_threshold):
 
 canny_edges = canny(gaussian_blur_image, 50, 150)
 ```
+<img src="./test_images_preprocess/canny_edges_plot.png">
+
 
 * Region of interest: this area eliminates the unwanted sight of image like clouds, top left, top right etc...
 ```python 
@@ -85,6 +91,7 @@ def region_of_interest(img, vertices):
 vertices = np.array([[(130,imshape[0]),(imshape[1]//2 - 60, 330), (imshape[1]//2 + 60, 330),(imshape[1] - 85,imshape[0])
 roi_image = region_of_interest(canny_edges, vertices)
 ```
+<img src="./test_images_preprocess/roi_plot.png">
 
 * We know the line equation y=mx+b from high school math. For detecting slope and intercept and get avarage slope and intercept and find the best left & right line
 ```python 
@@ -100,12 +107,16 @@ max_line_gap = 10    # maximum gap in pixels between connectable line segments
 
 hough_image = hough_lines(roi_image, rho, theta, threshold, min_line_length, max_line_gap)
 ```
+<img src="./test_images_preprocess/hough_plot.png">
+
 * At the end we apply detected lane line to initial image with opencv draw line method.
 ```python 
 def weighted_img(img, initial_img, α=0.8, β=1., γ=0.):
     return cv2.addWeighted(initial_img, α, img, β, γ)
 result = weighted_img(image, hough_image )
 ```
+<img src="./test_images_preprocess/weighted_plot.png">
+
 
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
