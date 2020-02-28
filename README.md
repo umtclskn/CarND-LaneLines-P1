@@ -126,16 +126,13 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ![alt text][image1]
 
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Potential shortcomings with current pipeline
+
+Pipeline could handle straight line. If pipeline face off any bad scenario, pipeline will not work. For example it could not work when lanes has curve or  it may be left line exist but right lane does not exist or both of them does not exist. When night or evening it would not work.  
 
 
-One potential shortcoming would be what would happen when ... 
+### 3. Suggest possible improvements to pipeline
 
-Another shortcoming could be ...
+A possible improvement would be to use quadratic formulas for getting curve parameters.
 
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Bir başka potansiyel gelişme de sabitler olabilir, örneğin Canny Edge Detection, ROI, HoughLinesP parametreleri otomatik olarak ayarlanabilir gece ve gündüz konumuna göre.
