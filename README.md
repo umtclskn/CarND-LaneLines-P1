@@ -135,4 +135,4 @@ Pipeline could handle straight line. If pipeline face off any bad scenario, pipe
 
 A possible improvement would be to use quadratic formulas for getting curve parameters.
 
-Bir başka potansiyel gelişme de sabitler olabilir, örneğin Canny Edge Detection, ROI, HoughLinesP parametreleri otomatik olarak ayarlanabilir gece ve gündüz konumuna göre.
+Another potential improvement could be constants, for example Canny Edge Detection, ROI, HoughLinesP parameters can be adjusted automatically according to the day and night position.
