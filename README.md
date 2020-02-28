@@ -119,12 +119,12 @@ result = weighted_img(image, hough_image )
 
 
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function. In y = mx + b is a line equation. m is slope and b is intercept. In draw_lines we calculate avarage slope because there are lots of line so so many slope and intercept. Also remember if slope < 0 the line is represented by left line otherwise line is right line. And we define a horizon for y value restirect for cloud and unwanted sky area.
+np.polyfit() function gives us slope & intercept.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+At the end of this process we combine the pipeline in process_image function.
 
 ![alt text][image1]
-
 
 ### 2. Potential shortcomings with current pipeline
 
